@@ -1,0 +1,153 @@
+# yaml-language-server: https://raw.githubusercontent.com/OAI/OpenAPI-Specification/refs/heads/main/schemas/v3.0/schema.yaml
+openapi: 3.1.0
+info:
+  title: Todo API
+  description: Todo API
+  version: 1.0.0
+paths:
+  /api/v1/tasks:
+    get:
+      tags:
+        - tasks
+      summary: List the available tasks
+      operationId: listTasks
+      parameters:
+        - name: status
+          in: query
+          description: Filters the tasks by their status
+          required: false
+          schema:
+            $ref: "#/components/schemas/Status"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Task"
+        "default":
+          $ref: "#/components/responses/errorResponse"
+    post:
+      tags:
+        - tasks
+      summary: Create a task
+      operationId: createTask
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "default":
+          $ref: "#/components/responses/errorResponse"
+      requestBody:
+        $ref: "#/components/requestBodies/taskData"
+  /api/v1/tasks/{taskID}:
+    put:
+      tags:
+        - tasks
+      summary: Update the task
+      operationId: updateTask
+      parameters:
+        - name: taskID
+          in: path
+          description: The task identifier
+          required: true
+          schema:
+            type: integer
+            format: uint64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "default":
+          $ref: "#/components/responses/errorResponse"
+      requestBody:
+        $ref: "#/components/requestBodies/taskData"
+    delete:
+      tags:
+        - tasks
+      summary: Delete task by id
+      operationId: deleteTask
+      parameters:
+        - name: taskID
+          in: path
+          description: The task identifier
+          required: true
+          schema:
+            type: integer
+            format: uint64
+      responses:
+        "204":
+          description: No content.
+        "default":
+          $ref: "#/components/responses/errorResponse"
+components:
+  requestBodies:
+    taskData:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TaskData"
+  responses:
+    errorResponse:
+      description: ErrorResponse
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              details:
+                type: string
+                description: Error details
+            required:
+              - details
+
+  schemas:
+    Status:
+      description: The task status
+      type: string
+      enum:
+        - working
+        - waiting
+        - done
+    Task:
+      allOf:
+      - $ref: '#/components/schemas/TaskData'
+      - type: object
+        required:
+        - id
+        - createdAt
+        properties:
+          id:
+            type: integer
+            format: uint64
+            description: The task identifier
+          createdAt:
+            type: string
+            format: date-time
+            description: The task creation date
+          status:
+            $ref: "#/components/schemas/Status"
+
+    TaskData:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The task title
+        description:
+          type: string
+          description: The task description
+        status:
+          $ref: "#/components/schemas/Status"
+      required:
+        - title
+        - status
+
