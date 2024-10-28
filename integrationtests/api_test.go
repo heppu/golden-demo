@@ -4,6 +4,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 	"testing"
 	"time"
@@ -15,6 +16,7 @@ import (
 )
 
 func TestMain(m *testing.M) {
+	os.Setenv("GOFLAGS", "-tags=integration")
 	itr := it.NewIntegrationTestRunner(
 		it.OptBase("../"),
 		it.OptTarget("./cmd/golden-demo"),
