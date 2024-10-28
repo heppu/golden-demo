@@ -64,6 +64,18 @@ func TestAPI(t *testing.T) {
 			`),
 			expectedCode: 200,
 		},
+		{
+			name:         "list tasks",
+			method:       "GET",
+			path:         "/api/v1/tasks",
+			expectedCode: 200,
+		},
+		{
+			name:         "delete tasks",
+			method:       "DELETE",
+			path:         "/api/v1/tasks/1",
+			expectedCode: 204,
+		},
 	}
 
 	for _, tt := range tests {
