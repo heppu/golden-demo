@@ -51,6 +51,19 @@ func TestAPI(t *testing.T) {
 			`),
 			expectedCode: 200,
 		},
+		{
+			name:   "modify task",
+			method: "PUT",
+			path:   "/api/v1/tasks/1",
+			body: strings.NewReader(`
+				{
+					"title": "testing 2",
+					"description": "asdasd",
+					"status": "working"
+				}
+			`),
+			expectedCode: 200,
+		},
 	}
 
 	for _, tt := range tests {
