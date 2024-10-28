@@ -114,8 +114,8 @@ components:
       description: The task status
       type: string
       enum:
-        - working
         - waiting
+        - working
         - done
     Task:
       allOf:

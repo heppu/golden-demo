@@ -96,9 +96,9 @@ func (s *Store) UpdateTask(ctx context.Context, id uint64, newData TaskData) (Ta
 		return Task{}, fmt.Errorf("beginning transaction failed: %w", err)
 	}
 
-	const query = "UPDATE tasks SET title = :title, description = :description, status = :status WHERE id = :id"
 	task := Task{ID: id, TaskData: newData}
-	if _, err := tx.ExecContext(ctx, query, task); err != nil {
+	const query = "UPDATE tasks SET title = :title, description = :description, status = :status WHERE id = :id"
+	if _, err := tx.NamedExecContext(ctx, query, task); err != nil {
 		return Task{}, rollback(tx, fmt.Errorf("executing update statement failed: %w", err))
 	}
 
