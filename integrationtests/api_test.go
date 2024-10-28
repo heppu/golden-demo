@@ -1,11 +1,16 @@
 package integrationtest_test
 
 import (
+	"io"
 	"log"
+	"net/http"
+	"strings"
 	"testing"
 	"time"
 
+	"github.com/elisasre/go-common/v2/golden"
 	it "github.com/elisasre/go-common/v2/integrationtest"
+	"github.com/elisasre/go-common/v2/must"
 	tc "github.com/testcontainers/testcontainers-go/modules/compose"
 )
 
@@ -20,5 +25,36 @@ func TestMain(m *testing.M) {
 	)
 	if err := itr.InitAndRun(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func TestAPI(t *testing.T) {
+	tests := []struct {
+		name         string
+		method       string
+		path         string
+		body         io.Reader
+		expectedCode int
+	}{
+		{
+			name:   "create task",
+			method: "POST",
+			path:   "/api/v1/tasks",
+			body: strings.NewReader(`
+				{
+					"title": "testing 2",
+					"description": "asdasd",
+					"status": "waiting"
+				}
+			`),
+			expectedCode: 200,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			req := must.NewRequest(t, tt.method, "http://127.0.0.1:8080"+tt.path, tt.body)
+			golden.Request(t, http.DefaultClient, req, tt.expectedCode)
+		})
 	}
 }
