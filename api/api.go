@@ -108,10 +108,14 @@ type Error struct {
 
 func (e *Error) Send(w http.ResponseWriter) {
 	w.WriteHeader(e.Code)
-	json.NewEncoder(w).Encode(ErrorResponse{Details: e.Details}) //nolint: errcheck
+	enc := json.NewEncoder(w)
+	enc.SetIndent("", "  ")
+	enc.Encode(ErrorResponse{Details: e.Details}) //nolint: errcheck
 }
 
 func writeJSON(w http.ResponseWriter, v interface{}) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(v) //nolint: errcheck
+	enc := json.NewEncoder(w)
+	enc.SetIndent("", "  ")
+	enc.Encode(v) //nolint: errcheck
 }
