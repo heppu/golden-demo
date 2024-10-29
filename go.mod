@@ -3,7 +3,7 @@ module github.com/heppu/golden-demo
 go 1.23.2
 
 require (
-	github.com/elisasre/go-common/v2 v2.1.4
+	github.com/elisasre/go-common/v2 v2.1.6
 	github.com/elisasre/mageutil v1.7.1
 	github.com/golang-migrate/migrate/v4 v4.18.1
 	github.com/jmoiron/sqlx v1.4.0

@@ -30,6 +30,8 @@ github.com/dprotaso/go-yit v0.0.0-20220510233725-9ba8df137936 h1:PRxIJD8XjimM5aT
 github.com/dprotaso/go-yit v0.0.0-20220510233725-9ba8df137936/go.mod h1:ttYvX5qlB+mlV1okblJqcSMtR4c52UKxDiX9GRBS8+Q=
 github.com/elisasre/go-common/v2 v2.1.4 h1:6/3Gqdj3+wab/YLLMxL5ZMERmle0yyjIUrwsFMMOxw0=
 github.com/elisasre/go-common/v2 v2.1.4/go.mod h1:yWVz5Q3P4P89VGCIUYQC8usav+cVFWtwfRv9hS/lGJg=
+github.com/elisasre/go-common/v2 v2.1.6 h1:JXnV6kqBCkFRfzMzLAp5Idge+cumjaBZXMBljA59l2k=
+github.com/elisasre/go-common/v2 v2.1.6/go.mod h1:2ude87x39Z37TehZLQNxhTaueaeaFjwCbxflmSGnAPc=
 github.com/elisasre/mageutil v1.7.1 h1:KCcOP522oM9x/plK12V1IVcHzTidgb7s9GxzZ7jHezo=
 github.com/elisasre/mageutil v1.7.1/go.mod h1:zuKZV939dV8tfFNy/4veDwG2rTZQtie1iHl0gbd2RaY=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=
