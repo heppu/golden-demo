@@ -32,6 +32,8 @@ github.com/elisasre/go-common/v2 v2.1.4 h1:6/3Gqdj3+wab/YLLMxL5ZMERmle0yyjIUrwsF
 github.com/elisasre/go-common/v2 v2.1.4/go.mod h1:yWVz5Q3P4P89VGCIUYQC8usav+cVFWtwfRv9hS/lGJg=
 github.com/elisasre/go-common/v2 v2.1.6 h1:JXnV6kqBCkFRfzMzLAp5Idge+cumjaBZXMBljA59l2k=
 github.com/elisasre/go-common/v2 v2.1.6/go.mod h1:2ude87x39Z37TehZLQNxhTaueaeaFjwCbxflmSGnAPc=
+github.com/elisasre/go-common/v2 v2.1.7 h1:L9kXKIdD2J1VWV7oFPW++4ex4tFBqDGo6vGRN7SLmGo=
+github.com/elisasre/go-common/v2 v2.1.7/go.mod h1:2ude87x39Z37TehZLQNxhTaueaeaFjwCbxflmSGnAPc=
 github.com/elisasre/mageutil v1.7.1 h1:KCcOP522oM9x/plK12V1IVcHzTidgb7s9GxzZ7jHezo=
 github.com/elisasre/mageutil v1.7.1/go.mod h1:zuKZV939dV8tfFNy/4veDwG2rTZQtie1iHl0gbd2RaY=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=
