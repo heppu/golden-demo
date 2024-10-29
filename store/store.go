@@ -11,6 +11,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+var now = time.Now
+
 type Store struct {
 	dsn  string
 	done chan struct{}
@@ -75,7 +77,7 @@ func (s *Store) CreateTask(ctx context.Context, data TaskData) (task Task, err e
 	}()
 
 	task.TaskData = data
-	task.CreatedAt = time.Now()
+	task.CreatedAt = now()
 	if idErr := stmt.GetContext(ctx, &task.ID, task); idErr != nil {
 		err = fmt.Errorf("executing create statement failed: %w", idErr)
 		return task, err
