@@ -5,7 +5,7 @@ This project contains simple todo API.
 
 ```sh
 docker compose up -d
-go run ./cmd/golden-demo
+mage go:run
 ```
 
 ### Swagger UI
