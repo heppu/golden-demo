@@ -150,4 +150,8 @@ components:
       required:
         - title
         - status
+      example:
+        title: "Example Task"
+        description: "Description for our task"
+        status: "waiting"
 
